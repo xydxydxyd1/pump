@@ -59,5 +59,13 @@ echo "Updating west modules..."
 cd "$WORKSPACE_DIR"
 west update
 
+# Install Zephyr Python dependencies
+echo "Installing Python dependencies..."
+west packages pip --install
+
+# Install Zephyr SDK
+echo "Installing Zephyr SDK..."
+west sdk install
+
 echo "Workspace setup complete."
 echo "Activate the venv with: source $VENV_DIR/bin/activate"
