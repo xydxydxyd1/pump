@@ -1,0 +1,26 @@
+/*
+ * Stepper motor (28BYJ-48) via ULN2003 driver on pins D8-D11.
+ *
+ * Wiring (ULN2003 inputs):
+ *   D8  → IN1 (Blue   - Coil 4)
+ *   D9  → IN2 (Pink   - Coil 2)
+ *   D10 → IN3 (Yellow - Coil 3)
+ *   D11 → IN4 (Orange - Coil 1)
+ *   +5V → Motor power on ULN2003 board
+ */
+
+/ {
+	aliases {
+		stepper = &stepper0;
+	};
+
+	stepper0: stepper0 {
+		compatible = "zephyr,h-bridge-stepper";
+		status = "okay";
+		micro-step-res = <2>;
+		gpios = <&arduino_nano_header 8 GPIO_ACTIVE_HIGH>,   /* D8 */
+			<&arduino_nano_header 9 GPIO_ACTIVE_HIGH>,   /* D9 */
+			<&arduino_nano_header 10 GPIO_ACTIVE_HIGH>,  /* D10 */
+			<&arduino_nano_header 11 GPIO_ACTIVE_HIGH>;  /* D11 */
+	};
+};
